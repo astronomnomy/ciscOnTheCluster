@@ -13,13 +13,18 @@ To run this code, type this in the command line:
 ```bash
 qsub -q cisc.q -sync n ./commandlineqsubexample.sh
 ```
+
 qsub is the command to submit to the queue
+
 -q  [name].q : is the queue name. CISC should have access to cisc.q. Others include e.g. mps.q for maths+ physical sciences school. 
+
 -sync y/n : Either the script waits for the job to finish before moving on in your script (y) or it submits the job and frees up the command line, effectively running in the background (n).
+
 ./[].sh : The name of the script you're submitting to the queue. They usually have to be set out in a certain way.
 
 
 Within the script there are a number of arguments that are read in by qsub, preceded by #$
+
 ```
 #$ -j y
 #$ -cwd
@@ -29,14 +34,22 @@ Within the script there are a number of arguments that are read in by qsub, prec
 #$ -o script_qsub.log
 ```
 
+
 -j y : join together the error and output streams into one log file
+
 -cwd : start running the code from the directory you're in when you submit the job (otherwise, home directory)
+
 -S /bin/bash : default using the bash shell (maybe you want to use cshell for example) 
+
 -N [name] : The name of the code you want to appear in the queue when you use 'qstat'
+
 -pe mpich 2 : How many cores you want to use (in this case 2 cores of 4GB each). This line also tells the cluster to use mpich code to make these cores talk to each other. The larger this number, the harder it is to find a spot on the queue, so guesstimate wisely! 
+
 -o [name].log : Name of the output and error files
 
+
 Other arguments you might like:
+
 -M name@email.com : emails you when the code has completed/died in error. Useful for long jobs so you don't have to keep checking it. 
 
 ### withinscriptqsubexample.sh

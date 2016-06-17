@@ -18,12 +18,12 @@ fslmaths ./example.nii -add 3 ./example_cmd_qsub.nii
 
 
 #find mean of all non-zero voxels, print to screen (will be put in commandlineqsubexample.log)
-fslstats /example.nii -M
+fslstats ./example.nii -M
 
 
 #find mean of all non-zero voxels, print to screen (will overwrite new file and put in cmd_qsub_results.txt)
-fslstats /example.nii -M > ./cmd_qsub_results.txt
+fslstats ./example.nii -M > ./cmd_qsub_results.txt
 
 
 #find mean of all non-zero voxels, print to screen (will be ADDED to the new file and put in cmd_qsub_results.txt)
-fslstats /example_cmd_qsub.nii -M >> ./cmd_qsub_results.txt
+fslstats ./example_cmd_qsub.nii -M >> ./cmd_qsub_results.txt
